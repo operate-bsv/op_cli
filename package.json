@@ -1,6 +1,6 @@
 {
-  "name": "fb-cli",
-  "version": "0.0.1.beta.1",
+  "name": "funcb-cli",
+  "version": "0.0.1-beta.2",
   "main": "lib/index.js",
   "license": "MIT",
   "bin": {
