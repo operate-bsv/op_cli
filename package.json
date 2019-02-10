@@ -1,6 +1,6 @@
 {
   "name": "@functional-bitcoin/cli",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "repository": "github:functional-bitcoin/cli",
   "license": "MIT",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
   "dependencies": {
     "bsv": "^0.23.0",
     "chalk": "^2.4.2",
-    "datapay": "^0.0.7",
+    "datapay": "^0.0.8",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "qrcode-terminal": "^0.12.0",
