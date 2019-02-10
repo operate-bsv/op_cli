@@ -1,8 +1,9 @@
 {
-  "name": "funcb-cli",
-  "version": "0.0.1-beta.2",
-  "main": "lib/index.js",
+  "name": "@functional-bitcoin/cli",
+  "version": "0.0.1-beta.3",
+  "repository": "github:functional-bitcoin/cli",
   "license": "MIT",
+  "main": "lib/index.js",
   "bin": {
     "fb": "lib/index.js"
   },

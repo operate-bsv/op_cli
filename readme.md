@@ -1,3 +1,3 @@
-# Functional Bitcoin CLI
+# Functional Bitcoin :: CLI
 
 Coming soon
