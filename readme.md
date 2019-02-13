@@ -55,7 +55,7 @@ $ fb publish my/function
 
 ## Functional Bitcoin protocol
 
-Functional Bitcoin is an `OP_RETURN` protocol, following the [Bitcom Bitcoin Application Protocol](https://bitcom.bitdb.network) pattern. Functions are encoded in an `OP_RETURN` output as such:
+Functional Bitcoin is an `OP_RETURN` protocol, following the [Bitcom Bitcoin Application Protocol](https://bitcom.bitdb.network) pattern with the prefix `1AKyFQWGGrpj1Nwp6H6uUEercQP213zj3P`. Functions are encoded in an `OP_RETURN` output as such:
 
 ```text
 OP_RETURN
