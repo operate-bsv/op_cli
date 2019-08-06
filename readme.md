@@ -2,11 +2,11 @@
 
 # Functional Bitcoin :: CLI
 
+**🚨 Alert: Functional Bitcoin is VERY beta software with frequent breaking changes. Brave pioneers only until the beta tag is removed.**
+
 Command line utility to help author and publish functions to the Bitcoin (SV) blockchain, for use in extensible Bitcoin application protocols.
 
 ## Installation
-
-Either install globally:
 
 ```console
 # Install cli
@@ -14,16 +14,6 @@ $ npm install -g @functional-bitcoin/cli@beta
 
 # List available commands
 $ fb --help 
-```
-
-Or install into local project and use with `npx`:
-
-```console
-# Install
-$ yarn add @functional-bitcoin/cli@beta
-
-# List available commands
-$ npx fb --help 
 ```
 
 ## Usage
@@ -53,36 +43,16 @@ $ fb publish --help
 $ fb publish my/function
 ```
 
-## Functional Bitcoin protocol
-
-Functional Bitcoin is an `OP_RETURN` protocol, following the [Bitcom Bitcoin Application Protocol](https://bitcom.bitdb.network) pattern with the prefix `1AKyFQWGGrpj1Nwp6H6uUEercQP213zj3P`. Functions are encoded in an `OP_RETURN` output as such:
-
-```text
-OP_RETURN
-  [PROTOCOL_PREFIX] [NAME] [FUNCTION] [?VERSION]
-```
-
-The TXID from any transaction following this protocol provides a reference which can be used when composing Functional Bitcoin scripts. The TXID is a command, which can recieve any number of arguments, and return an output. In a script, functions are "piped" together so the output from the first function is passed to the next in sequence until a final result is returned.
-
-```text
-OP_RETURN
-  [TXID] [ARG1] [ARG2] [ARG3] [ARG4] |
-  [TXID] [ARG1] [ARG2] |
-  [TXID] [ARG1] [ARG2]
-
-```
-
 ## Creating functions
 
 A generated function will look like this:
 
-```javascript
-module.exports = ({ ctx }, arg1, arg2) => {
-  return ctx;
-}
+```lua
+function main(ctx, arg1, arg2)
+  return ctx
+end
 ```
 
-Functions are executed in scripts, in which the return value of each function is passed to the next function in the script as `ctx`. Each subsequent argument is received as a Buffer and it is up to the function to cast the Buffer into the desired type.
+Functions are scripts that define a `main()` function, although within the script any other necessary functions, classes and variables can be defined. The script is written using Lua, and executed within a sandboxed environment with the `file` and `io` modules removed.
 
-Functions are executed within a sandboxed node VM. Unless objects are explicitly exposed to the sandbox by [the agent](https://github.com/functional-bitcoin/agent), functions do not have access to the agent's environment or global variables. Functions cannot access environment variables, overwrite global functions, or do thing like `process.exit(0)`. [Read more here](https://github.com/functional-bitcoin/agent).
-
+A function represents a "cell" - an atomic subroutine within a "tape" (a transaction output). The return value of each cell is passed to the next cell in the tape. Thus cell by cell the tapes' result is calculated - pure functional programming on bitcoin!
