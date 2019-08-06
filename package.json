@@ -8,13 +8,13 @@
     "fb": "lib/index.js"
   },
   "dependencies": {
-    "bsv": "^0.23.0",
+    "bsv": "^0.29.2",
     "chalk": "^2.4.2",
-    "datapay": "^0.0.8",
-    "dotenv": "^6.2.0",
-    "ejs": "^2.6.1",
+    "datapay": "^0.0.18",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
     "qrcode-terminal": "^0.12.0",
     "shelljs": "^0.8.3",
-    "yargs": "^12.0.5"
+    "yargs": "^13.3.0"
   }
 }
