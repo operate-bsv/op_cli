@@ -1,46 +1,48 @@
-[![license](https://img.shields.io/github/license/functional-bitcoin/library.svg)](https://github.com/functional-bitcoin/library/blob/master/license.md)
+# Operate | CLI
 
-# Functional Bitcoin :: CLI
+Operate is an extensible Bitcoin meta programming protocol. It offers a way of constructing Turing Complete programs encapsulated in Bitcoin transactions that can be be used to process data, perform calculations and operations, and return any kind of result.
 
-**🚨 Alert: Functional Bitcoin is VERY beta software with frequent breaking changes. Brave pioneers only until the beta tag is removed.**
+**Operate | CLI** is a node utility to help author and publish Ops (functions) on the Bitcoin (SV) blockchain.
 
-Command line utility to help author and publish functions to the Bitcoin (SV) blockchain, for use in extensible Bitcoin application protocols.
+More infomation:
+
+* [Project website](https://www.operatebsv.org)
 
 ## Installation
 
-```console
+```bash
 # Install cli
-$ npm install -g @functional-bitcoin/cli@beta
+> npm install -g operate-cli
 
 # List available commands
-$ fb --help 
+> operate --help 
 ```
 
 ## Usage
 
 Initialise your working directory. This will generate a `.bit` environemnt file containing your publishing address and private key.
 
-```console
-$ fb init --help
+```bash
+> operate init --help
 
-$ fb init .
+> operate init .
 ```
 
 Create new functions. This will generate a blank function in the `src` folder of your working directory.
 
-```console
-$ fb new --help
+```bash
+> operate new --help
 
-$ fb new my/function -a arg1 -a arg2
+> operate new my/function -a arg1 -a arg2
 ```
 
 Publish functions to the blockchain. It is necessary to fund your publishing address (in the `.bit` file) with a few satoshis before publishing.
 
 
-```console
-$ fb publish --help
+```bash
+> operate publish --help
 
-$ fb publish my/function
+> operate publish my/function
 ```
 
 ## Creating functions
@@ -48,8 +50,8 @@ $ fb publish my/function
 A generated function will look like this:
 
 ```lua
-function main(ctx, arg1, arg2)
-  return ctx
+return function(state, arg1, arg2)
+  return state
 end
 ```
 
