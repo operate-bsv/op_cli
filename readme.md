@@ -1,8 +1,8 @@
 # Operate | CLI
 
-Operate is an extensible Bitcoin meta programming protocol. It offers a way of constructing Turing Complete programs encapsulated in Bitcoin transactions that can be be used to process data, perform calculations and operations, and return any kind of result.
+Operate is an extensible Bitcoin meta programming protocol. It offers a way of running programs encapsulated in Bitcoin (SV) transactions that can be be used to process data, perform calculations and operations, and return any computable value.
 
-**Operate | CLI** is a node utility to help author and publish Ops (functions) on the Bitcoin (SV) blockchain.
+**Operate | CLI** is command line utility to help author and publish Ops (functions) on the BSV blockchain.
 
 More infomation:
 
@@ -10,51 +10,86 @@ More infomation:
 
 ## Installation
 
+The CLI is a `npm` package. It can be installed using `npm` or `yarn`.
+
 ```bash
-# Install cli
+# Install with npm
 > npm install -g operate-cli
 
-# List available commands
-> operate --help 
+# Install with yarn
+> yarn global add operate-cli
 ```
 
 ## Usage
 
+### Getting started
+
 Initialise your working directory. This will generate a `.bit` environemnt file containing your publishing address and private key.
 
 ```bash
-> operate init --help
-
 > operate init .
 ```
 
-Create new functions. This will generate a blank function in the `src` folder of your working directory.
+You will need to fund your publishing wallet before publishing any Ops. From within your working directory, use the wallet to see your wallet address and balance.
 
 ```bash
-> operate new --help
+> operate init .
+```
 
+### Getting help
+
+The CLI can list all available commands and provide usage instructions.
+
+```bash
+# List available commands
+> operate --help 
+
+# Get help on any command
+> operate [command] --help
+```
+
+### Creating/publishing functions
+
+Use the `new` command to generate a new blank function in the `src` folder of your working directory.
+
+```bash
 > operate new my/function -a arg1 -a arg2
 ```
 
-Publish functions to the blockchain. It is necessary to fund your publishing address (in the `.bit` file) with a few satoshis before publishing.
+### Publish a function
+
+When ready (and your publishing wallet is funded), use the `publish` command to publish the Op to the blockchain.
 
 
 ```bash
-> operate publish --help
-
 > operate publish my/function
 ```
 
-## Creating functions
+## Writing Ops
 
-A generated function will look like this:
+An Op is a function written in Lua. A generated function will look like this:
 
 ```lua
-return function(state, arg1, arg2)
+--[[
+Document the function
+]]--
+return function(state, arg1, arg2, ...)
+  state = state or {}
+  -- Code here
   return state
 end
 ```
 
-Functions are scripts that define a `main()` function, although within the script any other necessary functions, classes and variables can be defined. The script is written using Lua, and executed within a sandboxed environment with the `file` and `io` modules removed.
+The first argument of the function is always the `state`. Where a function is called in the first cell of a tape, the state will default to `nil` so your function should handle that.
 
-A function represents a "cell" - an atomic subroutine within a "tape" (a transaction output). The return value of each cell is passed to the next cell in the tape. Thus cell by cell the tapes' result is calculated - pure functional programming on bitcoin!
+The function can receive any number of arguments, as defined by your protocol's parameters. Within the body of the function, those arguments can be used to mutate the state in any way before returning a new, modified state.
+
+The comment block immediately prior to the function should be used to add documentation and examples. Any Markdown formatted text can be placed here.
+
+* [Learn more about writing Ops](https://www.operatebsv.org/docs)
+
+## License
+
+[MIT](https://github.com/operate-bsv/op_cli/blob/master/LICENSE.md)
+
+© Copyright 2019 Chronos Labs Ltd.
