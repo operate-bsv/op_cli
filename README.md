@@ -14,10 +14,10 @@ The CLI is a `npm` package. It can be installed using `npm` or `yarn`.
 
 ```bash
 # Install with npm
-> npm install -g operate-cli
+> npm install -g @operate/cli
 
 # Install with yarn
-> yarn global add operate-cli
+> yarn global add @operate/cli
 ```
 
 ## Usage
