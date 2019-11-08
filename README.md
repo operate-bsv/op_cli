@@ -30,10 +30,10 @@ Initialise your working directory. This will generate a `.bit` environemnt file 
 > operate init .
 ```
 
-You will need to fund your publishing wallet before publishing any Ops. From within your working directory, use the wallet to see your wallet address and balance.
+You will need to fund your publishing wallet before publishing any Ops. From within your working directory, use the `wallet` command to see your wallet address and balance.
 
 ```bash
-> operate init .
+> operate wallet
 ```
 
 ### Getting help
