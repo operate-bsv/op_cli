@@ -92,6 +92,6 @@ The comment block immediately prior to the function should be used to add docume
 
 ## License
 
-[MIT](https://github.com/operate-bsv/op_cli/blob/master/LICENSE.md)
+[MIT License](https://github.com/operate-bsv/op_cli/blob/master/LICENSE.md).
 
 © Copyright 2019 Chronos Labs Ltd.
