@@ -1,8 +1,10 @@
 # Operate | CLI
 
-Operate is an extensible Bitcoin meta programming protocol. It offers a way of running programs encapsulated in Bitcoin (SV) transactions that can be be used to process data, perform calculations and operations, and return any computable value.
+Operate command line utility to help developers author and publish Ops (functions) on the BSV blockchain.
 
-**Operate | CLI** is command line utility to help author and publish Ops (functions) on the BSV blockchain.
+## About Operate
+
+Operate is a toolset to help developers build applications, games and services on top of Bitcoin (SV). It lets you write functions, called "Ops", and enables transactions to become small but powerful programs, capable of delivering new classes of services layered over Bitcoin.
 
 More infomation:
 
